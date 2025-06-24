@@ -10,7 +10,9 @@ class Settings(BaseSettings):
     DB_USER: str
     DB_PASSWORD: str
 
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(
+        env_file=".env", env_file_encoding="utf-8", case_sensitive=True
+    )
 
 
 def get_settings() -> Settings:
