@@ -1,0 +1,10 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - template-db-data:/var/lib/postgresql/data
+volumes:
+  template-db-data:
