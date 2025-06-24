@@ -34,6 +34,7 @@ ENV PYTHONPATH=/app
 COPY ./pyproject.toml ./uv.lock /app/
 
 COPY ./app /app/app
+COPY ./migrations /app/migrations
 
 # Sync the project
 # Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers
