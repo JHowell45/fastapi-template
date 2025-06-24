@@ -7,6 +7,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    # General:
+    ENCRYPTION_KEY: str
+
+    # Database:
     DB_HOST: str
     DB_PORT: int
     DB_USER: str
