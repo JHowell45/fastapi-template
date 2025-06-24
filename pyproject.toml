@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "alembic>=1.16.2",
+    "cryptography>=45.0.4",
     "fastapi[standard]>=0.115.13",
     "pydantic-settings>=2.10.1",
     "sqlalchemy-utils>=0.41.2",
@@ -14,6 +15,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "ipython>=9.3.0",
     "mypy>=1.16.1",
     "ruff>=0.12.0",
 ]
