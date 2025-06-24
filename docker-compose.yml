@@ -27,6 +27,11 @@ services:
       dockerfile: Dockerfile
     restart: always
     healthcheck:
+      test: ["CMD-SHELL", "curl --fail 'http://127.0.0.1:80/api/utils/health-check/' || exit 1"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 10s
     ports:
       - "80:80"
     env_file:
