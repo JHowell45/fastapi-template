@@ -19,6 +19,8 @@ services:
       - POSTGRES_DB=${DB_NAME?Variable not set}
     volumes:
       - template-db-data:/var/lib/postgresql/data
+    network:
+      - template-network
   app:
     build:
       context: .
@@ -41,6 +43,8 @@ services:
       db:
         condition: service_healthy
         restart: true
+    network:
+      - template-network
 networks:
   template-network:
     driver: bridge
