@@ -45,6 +45,8 @@ services:
           target: /app/app
         - action: rebuild
           path: pyproject.toml
+        - action: rebuild
+          path: .env
     depends_on:
       db:
         condition: service_healthy
