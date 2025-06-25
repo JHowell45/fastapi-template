@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     # TODO: Still needs work! Should dynamically set the current user
-    user: 1000:1000
+    # user: 1000:1000
     healthcheck:
       test: ["CMD-SHELL", "curl --fail 'http://127.0.0.1:80/api/utils/health-check/' || exit 1"]
       interval: 10s
