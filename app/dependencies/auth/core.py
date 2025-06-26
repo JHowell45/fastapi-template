@@ -7,13 +7,14 @@ from sqlmodel import select
 from app.dependencies.db import SessionDep
 from app.models.users import User
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/token")
 
 
 async def get_current_user(
     session: SessionDep, token: Annotated[str, Depends(oauth2_scheme)]
 ) -> User:
-    return session.exec(select(User)).first()
+    if user := session.exec(select(User)).first():
+        return user
 
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
