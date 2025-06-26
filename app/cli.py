@@ -8,7 +8,7 @@ from app.models.users import User
 app = typer.Typer()
 
 
-@app.command()
+@app.command(help="Create an admin user.")
 def create_superuser(email: str, password: str):
     with Session(engine) as session:
         new_user: User = User(email=email, hashed_password=password)
