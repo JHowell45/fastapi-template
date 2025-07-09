@@ -1,8 +1,8 @@
-"""creating user table
+"""create user table
 
-Revision ID: 6ce658f6d3eb
+Revision ID: c8f4bae6a505
 Revises:
-Create Date: 2025-06-25 22:21:27.921060
+Create Date: 2025-07-09 20:52:21.559812
 
 """
 
@@ -14,7 +14,7 @@ import sqlmodel
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision: str = "6ce658f6d3eb"
+revision: str = "c8f4bae6a505"
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -32,8 +32,12 @@ def upgrade() -> None:
             sqlalchemy_utils.types.encrypted.encrypted_type.StringEncryptedType(),
             nullable=False,
         ),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column(
+            "created_at", sa.DateTime(), server_default=sa.text("now()"), nullable=False
+        ),
+        sa.Column(
+            "updated_at", sa.DateTime(), server_default=sa.text("now()"), nullable=False
+        ),
         sa.PrimaryKeyConstraint("id"),
     )
     # ### end Alembic commands ###
