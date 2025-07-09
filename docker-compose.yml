@@ -26,6 +26,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    # This is a problem for new projects and pretty much breaks fastapi and uv's ability to do what it needs to do with files.
     user: ${DOCKER_CURRENT_USER?Variable not set}
     healthcheck:
       test: ["CMD-SHELL", "curl --fail 'http://127.0.0.1:80/api/utils/health-check/' || exit 1"]
